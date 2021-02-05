@@ -22,7 +22,7 @@ from scipy.constants import c as speed_of_light
 maxEvents = -1
 checkDoubles = True
 
-nMaxFiles = 2
+nMaxFiles = 1
 skipFiles = 0
 
 
@@ -331,7 +331,7 @@ for dataset in [args.data,args.mc_mu,args.mc_tau,args.mc_x,args.mc_onia,args.mc_
             # add gen info as a column of the muon
             if (dataset!=args.data):
                 #pile up weights only for mc
-
+                
                 bcands['puWeight'] = nf['puWeight']
                 bcands['puWeightUp'] = nf['puWeightUp']
                 bcands['puWeightDown'] = nf['puWeightDown']
@@ -527,7 +527,7 @@ for dataset in [args.data,args.mc_mu,args.mc_tau,args.mc_x,args.mc_onia,args.mc_
                     df['mu2_dz'] = tab.mu2_dz
                     df['mu1_dzErr'] = tab.mu1_dzErr
                     df['mu2_dzErr'] = tab.mu2_dzErr             
-                    bcands['nPV'] = tab.nPrimaryVertices
+                    df['nPV'] = tab.nPrimaryVertices
                 
                     #not very useful, now we have jpsi vertex coordinates
                     '''
