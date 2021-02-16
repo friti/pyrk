@@ -26,7 +26,8 @@ def create_datacard_signal(data_int,his,dat_name='datacard'):
     f.write("process \t 1 \t 0 \t 2 \t 3 \t 4 \t 5 \t 6 \t 7 \t 8 \t 9  \n") 
     f.write("rate  \t %.2f \t %.2f \t %.2f \t %.2f \t %.2f \t %.2f \t  %.2f \t %.2f \t %.2f \t %.2f\n"%(his[0].Integral(),his[1].Integral(),his[2].Integral(),his[3].Integral(),his[4].Integral(),his[5].Integral(),his[6].Integral(),his[7].Integral(),his[8].Integral(),his[9].Integral()))
     f.write("-------------------------------------------------------------------- --------------------\n")
-    f.write("br_tau_over_mu  lnN 1.15 - - - - - - - - -\n")
+
+    f.write("br_tau_over_mu  lnN - 1.15  - - - - - - - -\n")
     f.write("br_pi_over_mu   lnN 1.15 - - - - - - - - -\n")
     f.write("br_chic0_over_mu lnN - - 1.15 - - - - - - -\n")
     f.write("br_chic1_over_mu lnN - - - 1.15 - - - - - -\n")
@@ -37,7 +38,8 @@ def create_datacard_signal(data_int,his,dat_name='datacard'):
     f.write("fake_rate lnN - - - - - - - - - 1.5\n")
     f.write("muon_id lnN                 1.05        1.05        1.05        1.05        1.05        1.05        1.05        1.05        1.05               -\n")
     f.write("trigger lnN                 1.05        1.05        1.05        1.05        1.05        1.05        1.05        1.05        1.05               -\n")
-    f.write("jpsi_plus_x lnN             -           -           -           -           -           -           -           1.30        -                  -\n")
+    f.write("jpsi_plus_x lnN             -           -           -           -           -           -           -           -           1.30        -                  \n")
+
     f.write("----------------------------------------------------------------------------\n") 
     f.write("mu_norm rateParam signal mu 1\n") 
     f.write("mu_norm rateParam signal tau 1\n") 
@@ -57,7 +59,7 @@ def create_datacard_signal(data_int,his,dat_name='datacard'):
     f.close()
     print("Saved datacard 'datacards/datacard_" + dat_name + ".txt'")
 
-def create_datacard_control(data_int,his,dat_name='datacard'):
+def create_datacard_control(data_int,his,nbins,dat_name='datacard'):
 
     f= open("datacards/datacard_" + dat_name + ".txt","w")
     f.write("imax 1 number of channels \n")
@@ -77,6 +79,7 @@ def create_datacard_control(data_int,his,dat_name='datacard'):
     f.write("shapes comb      control   param_ws.root wspace:mc_comb_CR \n")
     f.write("shapes mis_id      control   param_ws.root wspace:mis_id_CR \n")
     f.write("--------------------------------------------------------------------------- \n") 
+
     f.write("bin control\n") 
     f.write("observation %.2f\n"%data_int)
     f.write("----------------------------------------------------------------------------\n") 
@@ -84,8 +87,9 @@ def create_datacard_control(data_int,his,dat_name='datacard'):
     f.write("process \t mu \t tau \t chic0 \t chic1 \t chic2 \t hc_mu \t jpsi_hc \t psi2s_mu  \t comb \t mis_id\n") 
     f.write("process \t 1 \t 0 \t 2 \t 3 \t 4 \t 5 \t 6 \t 7 \t 8 \t 9 \n") 
     f.write("rate \t %.2f \t %.2f \t %.2f \t %.2f \t %.2f \t %.2f \t %.2f  \t %.2f \t %.2f  \t %.2f\n"%(his[0].Integral(),his[1].Integral(),his[2].Integral(),his[3].Integral(),his[4].Integral(),his[5].Integral(),his[6].Integral(),his[7].Integral(),his[8].Integral(),his[9].Integral()))
+
     f.write("-------------------------------------------------------------------- --------------------\n")
-    f.write("br_tau_over_mu  lnN 1.15 - - - - - - - - -\n")
+    f.write("br_tau_over_mu  lnN - 1.15 - - - - - - - -\n")
     f.write("br_pi_over_mu   lnN 1.15 - - - - - - - - -\n")
     f.write("br_chic0_over_mu lnN - - 1.15 - - - - - - -\n")
     f.write("br_chic1_over_mu lnN - - - 1.15 - - - - - -\n")
@@ -93,10 +97,10 @@ def create_datacard_control(data_int,his,dat_name='datacard'):
     f.write("br_hc_over_mu lnN  - - - - - 1.15   - - - -\n")
     f.write("br_psi2s_over_mu lnN - - - - - - - 1.15  - -\n")
     f.write("br_jpsi_hc_over_mu lnN - - - - - - 1.15 - - -\n")
-    f.write("fake_rate lnN - - - - - - - - - 1.5\n")
-    f.write("muon_id lnN                 1.05        1.05        1.05        1.05        1.05        1.05        1.05        1.05        1.05               -\n")
+    #    f.write("fake_rate lnN - - - - - - - - - 1.5\n")
+    f.write("muon_id lnN                 0.95        0.95        0.95        0.95        0.95        0.95        0.95        0.95        0.95               -\n")
     f.write("trigger lnN                 1.05        1.05        1.05        1.05        1.05        1.05        1.05        1.05        1.05               -\n")
-    f.write("jpsi_plus_x lnN             -           -           -           -           -           -           -           1.30        -                  -\n")
+    f.write("jpsi_plus_x lnN             -           -           -           -           -           -           -           -           1.30        -                  \n")
     f.write("----------------------------------------------------------------------------\n") 
     f.write("mu_norm rateParam control mu 1\n") 
     f.write("mu_norm rateParam control tau 1\n") 
@@ -113,7 +117,9 @@ def create_datacard_control(data_int,his,dat_name='datacard'):
     f.write("comb_norm rateParam control comb 1\n")
     f.write("#mc_comb_unc lnN - - - 1.5 \n") 
     f.write("-----------------------------------------------\n") 
-    f.write("misid_CR_bin1  flatParam \n")
+    for i in range(1,nbins+1):
+        f.write("misid_CR_bin"+str(i)+"  flatParam \n")
+    '''
     f.write("misid_CR_bin2  flatParam \n")
     f.write("misid_CR_bin3  flatParam \n")
     f.write("misid_CR_bin4  flatParam \n")
@@ -128,7 +134,7 @@ def create_datacard_control(data_int,his,dat_name='datacard'):
     f.write("misid_CR_bin13  flatParam \n")
     f.write("misid_CR_bin14  flatParam \n")
     f.write("misid_CR_bin15  flatParam \n")
-
+    '''
     f.close()
     print("Saved datacard 'datacards/datacard_" + dat_name + ".txt'")
 
